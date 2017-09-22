@@ -48,11 +48,11 @@ def up():
 def uploaded_file():
     conversion()
    # n =  os.path.join(app.config['stadistic'], 'Base de datos1 - proyecto No. 1.xlsx')
-    print os.path.join(app.config['stadistic'], 'csvfile.csv')
+   # print os.path.join(app.config['stadistic'], 'csvfile.csv')
     data = pd.read_csv(os.path.join(app.config['stadistic'], 'csvfile.csv'), usecols=[0, 1])
     df2 = data.set_index("Fecha")
     df3 = data.set_index("Monto mensual")
-    print data
+   # print data
     females = pd.DataFrame(data["Fecha"], index=data["Monto mensual"])
     return render_template('view.html', tables=[data.to_html(classes='data')],
                            titles=['Tablas predictoras'])

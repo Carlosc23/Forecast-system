@@ -1,8 +1,4 @@
-<html>
-<head>
-<title>Forecast System</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style>body  {
+body  {
 background: #F4F4F4;
 margin: 0;
 }
@@ -103,21 +99,4 @@ color: #666666;
 .separator {
 font-size:11px;
 color:#FFFFFF;
-}</style>
-</head>
-<body>
-<div id="container">
-  <div id="header"> <a href="">Forecast System</a> </div>
-  <div id="menu"> <a href="">HOME</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href="upload">SUBIR UN ARCHIVO</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://github.com/">CONTACT US</a> </div>
-  <div id="sidebar">
-    <h1>Bienvenidos "Empresa de energia"</h1>
-  </div>
-  <div id="main">
-    <p><b>Forecast System</b> es un sistema desarrollado por integrantes de  <a target="_blank" href="https://github.com/gbrolo/freelanceros-web">Freelanceros</a> y <a target="_blank" href="https://github.com/DCplayer/EngAppsados">TransUVG</a></p>
-    <h2>¿Que hace este programa?</h2>
-    <h2>¿Como funciona?</h2>
-  </div>
-  <div id="footer"> &copy;2017 Forecast System &nbsp;<span class="separator">|</span>&nbsp; Design by  </a> </div>
-</div>
-</body>
-</html>
+}
