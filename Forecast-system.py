@@ -33,6 +33,7 @@ def allowed_filename(filename):
 
 @app.route('/upload', methods=['GET', 'POST'])
 def up():
+    print "hola2"
     if request.method == 'POST':
         submitted_file = request.files['file']
         # print allowed_filename(submitted_file.filename)
