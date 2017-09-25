@@ -32,7 +32,7 @@ def averageM():
                 f2014.append(fecha[i])
                 d2014.append(dinero[i])
         for j in range(len(f2013)-3):
-            d2015.append((float(d2013[j+2])+float(d2014[j+1]))/2.0)
+            d2015.append((float(d2013[j+2])+float(d2014[j+1]))/2.0)     #linea donde se calcula el promedio
             f2015.append(f2013[j+1].replace("2013","2015"))
         d2015.pop(0)
         f2015.pop(len(f2015)-1)
@@ -41,7 +41,7 @@ def averageM():
         writer = csv.DictWriter(csvDataFile, fieldnames=fieldnames)
         writer.writeheader()
         for index in range(len(f2015)):
-            writer.writerow({'fecha':str(f2015[index]),'cobro':str(d2015[index])})
+            writer.writerow(    {'fecha':str(f2015[index]),'cobro':str(d2015[index])}   )
 
 def generate_graphs():
     pre = os.path.dirname(os.path.realpath(__file__))
