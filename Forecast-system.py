@@ -40,7 +40,6 @@ def up():
         if submitted_file and allowed_filename(submitted_file.filename):
             filename = secure_filename(submitted_file.filename)
             submitted_file.save(os.path.join(app.config['stadistic'], filename))
-            print "jocop"
             return redirect(url_for('elegir_tiempo'))
     return render_template('upload.html')
 
@@ -57,15 +56,18 @@ def uploaded_file():
     females = pd.DataFrame(data["Fecha"], index=data["Monto mensual"])
     return render_template('view.html', tables=[data.to_html(classes='data')],
                            titles=['Tablas predictoras'])
+afuera=""
 @app.route('/elegir_tiempo', methods=['GET', 'POST'])
 def elegir_tiempo():
     conversion()
     if request.method == 'POST':
-        print "jc",request.form['two']
+        afuera=request.form['two']
+        return redirect(url_for('resultados',opc=afuera))
     return render_template('select.html')
-@app.route('/resultados', methods=['GET', 'POST'])
-def resultados():
-    pass
+@app.route('/resultados<opc>', methods=['GET', 'POST'])
+def resultados(opc):
+    print "opc",opc
+    return render_template('results.html')
 
 if __name__ == '__main__':
     app.debug = True
