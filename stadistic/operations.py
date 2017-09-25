@@ -5,12 +5,20 @@ import matplotlib.pyplot as plt
 from mpltools import style
 from mpltools import layout
 import os
-
+import csv
 style.use('ggplot')
 def smoothing():
     pass
 def averageM():
-    pass
+    fecha = []
+    dinero = []
+    with open("stadistic/csvfile.csv") as csvDataFile:
+        csvReader = csv.reader(csvDataFile, delimiter=",")
+        for row in csvReader:
+            fecha.append(row[0])
+            dinero.append(row[1])
+        print dinero[3]
+        print fecha[3]
 def generate_graphs():
     pre = os.path.dirname(os.path.realpath(__file__))
     path = os.path.join(pre, 'csvfile.csv')

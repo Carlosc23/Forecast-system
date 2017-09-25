@@ -8,6 +8,7 @@ from werkzeug.utils import secure_filename
 
 from stadistic.converter import conversion
 from stadistic.operations import generate_graphs
+from stadistic.operations import averageM
 
 sys.path.append('/path/to/py_files_and_packages')
 from os.path import join, dirname, realpath
@@ -80,6 +81,7 @@ def resultados(opc):
     return '<img src="data:Unc/jpg;base64,{}">'.format(plot_url)
 
 if __name__ == '__main__':
+    averageM()
     app.debug = True
     app.run()
     app.run(debug=True)
