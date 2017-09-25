@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 
 from stadistic.converter import conversion
 from stadistic.operations import generate_graphs
-from stadistic.operations import averageM
+from stadistic.operations import averageM, graficarConPromedio
 
 sys.path.append('/path/to/py_files_and_packages')
 from os.path import join, dirname, realpath
@@ -71,9 +71,10 @@ def resultados(opc):
     print "opc",opc
     if opc=="1":
         print "nee"
-        plot_url=generate_graphs()
-    elif opc==2:
-        pass
+        plot_url = generate_graphs()
+    elif opc=="2":
+        print "naa"
+        plot_url = graficarConPromedio(2)
     elif opc==3:
         pass
     elif opc==4:
