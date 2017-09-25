@@ -7,6 +7,7 @@ from flask import render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
 from stadistic.converter import conversion
+from stadistic.operations import generate_graphs
 
 sys.path.append('/path/to/py_files_and_packages')
 from os.path import join, dirname, realpath
@@ -67,7 +68,16 @@ def elegir_tiempo():
 @app.route('/resultados<opc>', methods=['GET', 'POST'])
 def resultados(opc):
     print "opc",opc
-    return render_template('results.html')
+    if opc=="1":
+        print "nee"
+        plot_url=generate_graphs()
+    elif opc==2:
+        pass
+    elif opc==3:
+        pass
+    elif opc==4:
+        pass
+    return '<img src="data:Unc/jpg;base64,{}">'.format(plot_url)
 
 if __name__ == '__main__':
     app.debug = True
