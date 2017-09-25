@@ -11,14 +11,38 @@ def smoothing():
     pass
 def averageM():
     fecha = []
+    f2014 = []
+    d2014 = []
+    f2013 = []
+    d2013 = []
+    f2015 = []
+    d2015 = []
     dinero = []
     with open("stadistic/csvfile.csv") as csvDataFile:
         csvReader = csv.reader(csvDataFile, delimiter=",")
+        j = 0
         for row in csvReader:
             fecha.append(row[0])
             dinero.append(row[1])
-        print dinero[3]
-        print fecha[3]
+        for i in range(len(fecha)):
+            if "2013" in fecha[i]:
+                f2013.append(fecha[i])
+                d2013.append(dinero[i])
+            elif "2014" in fecha[i]:
+                f2014.append(fecha[i])
+                d2014.append(dinero[i])
+        for j in range(len(f2013)-3):
+            d2015.append((float(d2013[j+2])+float(d2014[j+1]))/2.0)
+            f2015.append(f2013[j+1].replace("2013","2015"))
+        d2015.pop(0)
+        f2015.pop(len(f2015)-1)
+    with open("stadistic/pronosticoPromedio.csv", "w") as csvDataFile:
+        fieldnames = ['fecha','cobro']
+        writer = csv.DictWriter(csvDataFile, fieldnames=fieldnames)
+        writer.writeheader()
+        for index in range(len(f2015)):
+            writer.writerow({'fecha':str(f2015[index]),'cobro':str(d2015[index])})
+
 def generate_graphs():
     pre = os.path.dirname(os.path.realpath(__file__))
     path = os.path.join(pre, 'csvfile.csv')
