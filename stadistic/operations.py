@@ -57,12 +57,14 @@ def averageM():
             f2015.append(f2013[j + 1].replace("2013", "2015"))
         d2015.pop(0)
         f2015.pop(len(f2015) - 1)
-    with open("stadistic/pronosticoPromedio.csv", "w") as csvDataFile:
+    csvDataFile.closed
+    with open("stadistic/pronosticoPromedio.csv", 'wb') as csvDataFile:
         fieldnames = ['fecha', 'cobro']
         writer = csv.DictWriter(csvDataFile, fieldnames=fieldnames)
         writer.writeheader()
         for index in range(len(f2015)):
             writer.writerow({'fecha': str(f2015[index]), 'cobro': str(d2015[index])})
+    csvDataFile.closed
     return d2015, f2015
 
 def createTable(numMes):
@@ -85,7 +87,7 @@ def createTable(numMes):
         csvReader = csv.reader(csvDataFile, delimiter=",")
         for row in csvReader:
             if "2015-01" in row[0]:
-                tEnero.add_row((row[0],row[1]))
+                tEnero.add_row((str(row[0]),str(row[1])))
             elif "2015-02" in row[0]:
                 tFebrero.add_row((str(row[0]),row[1]))
             elif "2015-03" in row[0]:
@@ -108,41 +110,109 @@ def createTable(numMes):
                 tNoviembre.add_row((row[0],row[1]))
             elif "2015-12" in row[0]:
                 tDiciembre.add_row((row[0],row[1]))
-    if opcion == 1:
+    csvDataFile.closed
+    if opcion == "1":
         return tEnero
-    elif opcion == 2:
+    elif opcion == "2":
         return tFebrero
-    elif opcion == 3:
+    elif opcion == "3":
         return tMarzo
-    elif opcion == 4:
+    elif opcion == "4":
         return tAbril
-    elif opcion == 5:
+    elif opcion == "5":
         return tMayo
-    elif opcion == 6:
+    elif opcion == "6":
         return tJunio
-    elif opcion == 7:
+    elif opcion == "7":
         return tJulio
-    elif opcion == 8:
+    elif opcion == "8":
         return tAgosto
-    elif opcion == 9:
+    elif opcion == "9":
         return tSeptiembre
-    elif opcion == 10:
+    elif opcion == "10":
         return tOctubre
-    elif opcion == 11:
+    elif opcion == "11":
         return tNoviembre
-    elif opcion == 12:
+    elif opcion == "12":
         return tDiciembre
 
 def graficarConSuavizamiento(numMes):
     pre = os.path.dirname(os.path.realpath(__file__))
     path = os.path.join(pre, 'pronosticosSuaves.csv')
     series = read_csv(path, header=0, parse_dates=[0], index_col=0, squeeze=True)
+    tiempo=""
     tiempo = "2015-0" + str(numMes)
     print tiempo
     a = series[tiempo]
-    a.plot(color=plt.rcParams['axes.color_cycle'][1], linewidth=1.5, linestyle="-")
-    plt.savefig('static/images/Graph.png')
-    path = 'Graph.png'
+    plt.figure(1)
+    #plt.subplot(211)
+    #a.hist(xlabelsize=10,ylabelsize=10,bins=5)
+    a.plot(color=plt.rcParams['axes.color_cycle'][1],linewidth=1.5, linestyle="-")
+    # Font style isn't accessible through rcParams
+    #plt.set_title("Product A sales", fontstyle='italic')
+    # Set an aspect ratio
+    #plt.savefig('static/image/Graph.png')
+    if numMes == "1":
+        
+        plt.savefig('static/image/Graph1.png')
+        plt.cla()
+        plt.close()
+        path='Graph1.PNG'
+    elif numMes == "2":
+        plt.savefig('static/image/Graph2.png')
+        plt.cla()
+        plt.close()
+        path='Graph2.PNG'
+    elif numMes == "3":
+        plt.savefig('static/image/Graph3.png')
+        plt.cla()
+        plt.close()
+        path='Graph3.PNG'
+    elif numMes == "4":
+        plt.savefig('static/image/Graph4.png')
+        plt.cla()
+        plt.close()
+        path='Graph4.PNG'
+    elif numMes == "5":
+        plt.savefig('static/image/Graph5.png')
+        plt.cla()
+        plt.close()
+        path='Graph5.PNG'
+    elif numMes == "6":
+        plt.savefig('static/image/Graph6.png')
+        plt.cla()
+        plt.close()
+        path='Graph6.PNG'
+    elif numMes == "7":
+        plt.savefig('static/image/Graph7.png')
+        plt.cla()
+        plt.close()
+        path='Graph7.png'
+    elif numMes == "8":
+        plt.savefig('static/image/Graph8.png')
+        plt.cla()
+        plt.close()
+        path='Graph8.png'
+    elif numMes == "9":
+        plt.savefig('static/image/Graph9.png')
+        plt.cla()
+        plt.close()
+        path='Graph9.png'
+    elif numMes == "10":
+        plt.savefig('static/image/Graph10.png')
+        plt.cla()
+        plt.close()
+        path='Graph10.png'
+    elif numMes == "11":
+        plt.savefig('static/image/Graph11.png')
+        plt.cla()
+        plt.close()
+        path='Graph11.png'
+    elif numMes == "12":
+        plt.savefig('static/image/Graph12.png')
+        plt.cla()
+        plt.close()
+        path='Graph12.png'
     return path
 
 

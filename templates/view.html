@@ -8,7 +8,7 @@ margin: 0;
 }
 
 #container {
-width: 780px;
+width: 800px;
 margin: 0 auto;
 text-align: center;
 background: #FFFFFF;
@@ -58,6 +58,7 @@ font-weight: normal;
 }
 
 h2 {
+
 color: #3b7687;
 font-size: 15px;
 margin: 20px 0 5px 0;
@@ -107,11 +108,14 @@ color:#FFFFFF;
 </head>
 <body>
 <div id="container">
-  <div id="header"> <a href="/">Forecast Systemm</a> </div>
+  <div id="header"> <a href="/">Forecast System</a> </div>
   <div id="menu"> <a href="/">HOME</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href="upload">SUBIR UN ARCHIVO</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://github.com/">CONTACT US</a> </div>
   <div id="main">
    <div class="page">
-  <h1>Dias de ingreso</h1>
+    <h1>Pronosticos</h1>
+	<h2>Serie de tiempo</h2>
+<img src="{{filename}}" alt="{{filename}}" height="572" width="622"/>
+<h2>Ingresos del mes</h2>
   {% for table in tables %}
     <h2>{{titles[loop.index]}}</h2>
     {{ table|safe }}

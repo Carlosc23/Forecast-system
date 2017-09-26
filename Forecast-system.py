@@ -1,6 +1,8 @@
+# encoding: utf-8
 import os
 import sys
-
+from lib2to3.pgen2 import driver
+from splinter import Browser
 import pandas as pd
 from flask import Flask
 from flask import render_template, request, redirect, url_for
@@ -9,6 +11,7 @@ from werkzeug.utils import secure_filename
 from stadistic.converter import conversion
 from stadistic.operations import generate_graphs
 from stadistic.operations import averageM, graficarConSuavizamiento, smoothing, createTable
+from untitled import LocalStorage
 
 sys.path.append('/path/to/py_files_and_packages')
 from os.path import join, dirname, realpath
@@ -55,7 +58,7 @@ def uploaded_file():
     df2 = data.set_index("Fecha")
     df3 = data.set_index("Monto mensual")
    # print data
-    females = pd.DataFrame(data["Fecha"], index=data["Monto mensual"])
+    females = pd.DataFrame(data["Fecha"])
     return render_template('view.html', tables=[data.to_html(classes='data')],
                            titles=['Tablas predictoras'])
 afuera=""
@@ -68,13 +71,24 @@ def elegir_tiempo():
     return render_template('select.html')
 @app.route('/resultados<opc>', methods=['GET', 'POST'])
 def resultados(opc):
+    #browser = Browser()
+    #browser.visit("http://mdn.github.io/web-storage-demo")
+
     print "opc",opc
-    plot_url = graficarConSuavizamiento(opc)
-    return render_template('results.html')
+    smoothing()
+    table= createTable(opc)
+    females = pd.DataFrame(pd.np.array(table))
+    a= graficarConSuavizamiento(opc)
+    print "dataframe"
+    #print females
+    #storage = LocalStorage(browser)
+    #storage.clear()
+    b="static/image/"+a
+    return render_template('view.html',filename=b, tables=[females.to_html(classes='data')],
+                           titles=['Tablas predictoras'])
 
 if __name__ == '__main__':
-    #averageM()
-    print createTable(2)
+    #print createTable(2)
     app.debug = True
     app.run()
     app.run(debug=True)
