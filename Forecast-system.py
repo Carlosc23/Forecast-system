@@ -8,12 +8,12 @@ from werkzeug.utils import secure_filename
 
 from stadistic.converter import conversion
 from stadistic.operations import generate_graphs
+from stadistic.operations import averageM, graficarConPromedio
 
 sys.path.append('/path/to/py_files_and_packages')
 from os.path import join, dirname, realpath
 app = Flask(__name__)
-UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'UPLOAD_FOLDER')
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 # Flask object initialization
 # app flask object has to be created before importing views below
 # because it calls "import app from app"
@@ -71,18 +71,18 @@ def resultados(opc):
     print "opc",opc
     if opc=="1":
         print "nee"
-        plot_url=generate_graphs()
-        print str(plot_url)
-        plot_url = str(plot_url)
-    elif opc==2:
-        pass
+        plot_url = generate_graphs()
+    elif opc=="2":
+        print "naa"
+        plot_url = graficarConPromedio(2)
     elif opc==3:
         pass
     elif opc==4:
         pass
-    return render_template('results.html',filename=str(plot_url))
+    return '<img src="data:Unc/jpg;base64,{}">'.format(plot_url)
 
 if __name__ == '__main__':
+    averageM()
     app.debug = True
     app.run()
     app.run(debug=True)
