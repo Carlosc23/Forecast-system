@@ -2,6 +2,8 @@ import base64
 import io
 from pandas import read_csv, DataFrame
 import matplotlib.pyplot as plt
+from astropy.table import Table, Column
+import numpy as np
 from mpltools import style
 from mpltools import layout
 import os
@@ -62,6 +64,74 @@ def averageM():
         for index in range(len(f2015)):
             writer.writerow({'fecha': str(f2015[index]), 'cobro': str(d2015[index])})
     return d2015, f2015
+
+def createTable(numMes):
+    #print "estoy aqui"
+    opcion = numMes
+    tEnero = Table(names=("Fecha","Monto"), dtype=('S10','f8'))
+    tFebrero = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tMarzo = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tAbril = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tMayo = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tJunio = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tJulio = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tAgosto = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tSeptiembre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tOctubre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tNoviembre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tDiciembre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+
+    with open("stadistic/pronosticosSuaves.csv") as csvDataFile:
+        csvReader = csv.reader(csvDataFile, delimiter=",")
+        for row in csvReader:
+            if "2015-01" in row[0]:
+                tEnero.add_row((row[0],row[1]))
+            elif "2015-02" in row[0]:
+                tFebrero.add_row((str(row[0]),row[1]))
+            elif "2015-03" in row[0]:
+                tMarzo.add_row((row[0],row[1]))
+            elif "2015-04" in row[0]:
+                tAbril.add_row((str(row[0]),row[1]))
+            elif "2015-05" in row[0]:
+                tMayo.add_row((row[0],row[1]))
+            elif "2015-06" in row[0]:
+                tJunio.add_row((row[0],row[1]))
+            elif "2015-07" in row[0]:
+                tJulio.add_row((row[0],row[1]))
+            elif "2015-08" in row[0]:
+                tAgosto.add_row((row[0],row[1]))
+            elif "2015-09" in row[0]:
+                tSeptiembre.add_row((row[0],row[1]))
+            elif "2015-10" in row[0]:
+                tOctubre.add_row((row[0],row[1]))
+            elif "2015-11" in row[0]:
+                tNoviembre.add_row((row[0],row[1]))
+            elif "2015-12" in row[0]:
+                tDiciembre.add_row((row[0],row[1]))
+    if opcion == 1:
+        return tEnero
+    elif opcion == 2:
+        return tFebrero
+    elif opcion == 3:
+        return tMarzo
+    elif opcion == 4:
+        return tAbril
+    elif opcion == 5:
+        return tMayo
+    elif opcion == 6:
+        return tJunio
+    elif opcion == 7:
+        return tJulio
+    elif opcion == 8:
+        return tAgosto
+    elif opcion == 9:
+        return tSeptiembre
+    elif opcion == 10:
+        return tOctubre
+    elif opcion == 11:
+        return tNoviembre
+    elif opcion == 12:
+        return tDiciembre
 
 def graficarConSuavizamiento(numMes):
     pre = os.path.dirname(os.path.realpath(__file__))

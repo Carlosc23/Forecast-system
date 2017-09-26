@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 
 from stadistic.converter import conversion
 from stadistic.operations import generate_graphs
-from stadistic.operations import averageM, graficarConSuavizamiento, smoothing
+from stadistic.operations import averageM, graficarConSuavizamiento, smoothing, createTable
 
 sys.path.append('/path/to/py_files_and_packages')
 from os.path import join, dirname, realpath
@@ -74,7 +74,7 @@ def resultados(opc):
 
 if __name__ == '__main__':
     #averageM()
-    smoothing()
+    print createTable(2)
     app.debug = True
     app.run()
     app.run(debug=True)
