@@ -74,7 +74,7 @@ def resultados(opc):
 
 if __name__ == '__main__':
     #averageM()
-    print createTable(2)
+    print createTable(1)
     app.debug = True
     app.run()
     app.run(debug=True)
