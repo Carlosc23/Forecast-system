@@ -75,7 +75,7 @@ def resultados(opc):
         plot_url = str(plot_url)
     elif opc=="2":
         print "naa"
-        plot_url = graficarConPromedio(2)
+        plot_url = graficarConSuavizamiento(2)
     elif opc==3:
         pass
     elif opc==4:
