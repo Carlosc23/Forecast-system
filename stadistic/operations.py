@@ -11,9 +11,21 @@ style.use('ggplot')
 
 
 def smoothing():
-    pass
-
-
+    d2015M = []
+    d2015M = averageM()[0]
+    d2015Suave = []
+    f2015 = []
+    f2015 = averageM()[1]
+    alpha = 0.74
+    d2015Suave.append(d2015M[0]) #obtener primer dato para el suavizamiento (es igual al del ponderado)
+    for i in range(len(f2015)-1):
+        d2015Suave.append(alpha*float(d2015M[i+1])+(1.0-alpha)*float(d2015Suave[i])) #ponderado junto con el del dia anterior
+    with open("stadistic/pronosticosSuaves.csv", "w") as csvDataFile:
+        fieldnames = ['fecha', 'cobro']
+        writer = csv.DictWriter(csvDataFile, fieldnames=fieldnames)
+        writer.writeheader()
+        for index in range(len(f2015)):
+            writer.writerow({'fecha': str(f2015[index]), 'cobro': str(d2015Suave[index])})
 def averageM():
     fecha = []
     f2014 = []
@@ -49,11 +61,11 @@ def averageM():
         writer.writeheader()
         for index in range(len(f2015)):
             writer.writerow({'fecha': str(f2015[index]), 'cobro': str(d2015[index])})
+    return d2015, f2015
 
-
-def graficarConPromedio(numMes):
+def graficarConSuavizamiento(numMes):
     pre = os.path.dirname(os.path.realpath(__file__))
-    path = os.path.join(pre, 'pronosticoPromedio.csv')
+    path = os.path.join(pre, 'pronosticosSuaves.csv')
     series = read_csv(path, header=0, parse_dates=[0], index_col=0, squeeze=True)
     tiempo = "2015-0" + str(numMes)
     print tiempo
