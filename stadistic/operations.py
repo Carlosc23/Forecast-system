@@ -58,15 +58,10 @@ def graficarConPromedio(numMes):
     tiempo = "2015-0" + str(numMes)
     print tiempo
     a = series[tiempo]
-    # ax1.plot(series['2015-01'], color=plt.rcParams['axes.color_cycle'][1], linewidth=1.5, linestyle="-")
     a.plot(color=plt.rcParams['axes.color_cycle'][1], linewidth=1.5, linestyle="-")
-    # ax1.plot(series['2015-02'], color=plt.rcParams['axes.color_cycle'][2], linewidth=1.5, linestyle="-")
-    # ax1.plot(series['2015-03'], color=plt.rcParams['axes.color_cycle'][2], linewidth=1.5, linestyle="-")
-    img = io.BytesIO()
-    plt.savefig(img, format='png')
-    img.seek(0)
-    plot_url = base64.b64encode(img.getvalue()).decode()
-    return plot_url
+    plt.savefig('static/images/Graph.png')
+    path = 'Graph.png'
+    return path
 
 
 def generate_graphs():
@@ -80,6 +75,5 @@ def generate_graphs():
     # ax1.plot(series['2015-03'], color=plt.rcParams['axes.color_cycle'][2], linewidth=1.5, linestyle="-")
     # plt.show()
     plt.savefig('static/images/Graph.png')
-    # path = os.path.join(pre, 'UPLOAD_FOLDER/Graph.PNG')
     path = 'Graph.png'
     return path
