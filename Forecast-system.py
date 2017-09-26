@@ -70,8 +70,9 @@ def elegir_tiempo():
 def resultados(opc):
     print "opc",opc
     if opc=="1":
-        print "nee"
         plot_url = generate_graphs()
+        print str(plot_url)
+        plot_url = str(plot_url)
     elif opc=="2":
         print "naa"
         plot_url = graficarConPromedio(2)
@@ -79,10 +80,10 @@ def resultados(opc):
         pass
     elif opc==4:
         pass
-    return '<img src="data:Unc/jpg;base64,{}">'.format(plot_url)
+    return render_template('results.html')
 
 if __name__ == '__main__':
-    averageM()
+    #averageM()
     app.debug = True
     app.run()
     app.run(debug=True)
