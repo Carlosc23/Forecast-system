@@ -69,17 +69,7 @@ def elegir_tiempo():
 @app.route('/resultados<opc>', methods=['GET', 'POST'])
 def resultados(opc):
     print "opc",opc
-    if opc=="1":
-        plot_url = generate_graphs()
-        print str(plot_url)
-        plot_url = str(plot_url)
-    elif opc=="2":
-        print "naa"
-        plot_url = graficarConPromedio(2)
-    elif opc==3:
-        pass
-    elif opc==4:
-        pass
+    plot_url = graficarConSuavizamiento(opc)
     return render_template('results.html')
 
 if __name__ == '__main__':
