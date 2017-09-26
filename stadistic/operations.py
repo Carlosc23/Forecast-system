@@ -3,6 +3,7 @@ import io
 from pandas import read_csv, DataFrame
 import matplotlib.pyplot as plt
 from astropy.table import Table, Column
+import astropy.units as astr
 import numpy as np
 from mpltools import style
 from mpltools import layout
@@ -70,18 +71,18 @@ def averageM():
 def createTable(numMes):
     #print "estoy aqui"
     opcion = numMes
-    tEnero = Table(names=("Fecha","Monto"), dtype=('S10','f8'))
-    tFebrero = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tMarzo = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tAbril = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tMayo = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tJunio = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tJulio = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tAgosto = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tSeptiembre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tOctubre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tNoviembre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tDiciembre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tEnero = Table(names=("Fecha","Monto"), dtype=('S10','S11'))
+    tFebrero = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tMarzo = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tAbril = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tMayo = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tJunio = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tJulio = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tAgosto = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tSeptiembre = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tOctubre = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tNoviembre = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tDiciembre = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
 
     with open("stadistic/pronosticosSuaves.csv") as csvDataFile:
         csvReader = csv.reader(csvDataFile, delimiter=",")
