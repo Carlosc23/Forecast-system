@@ -1,24 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
 <head>
-    <meta charset="UTF-8">
-   <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form action="/upload" method="post" enctype=multipart/form-data>
-      <p><input type="file" name="file">
-         <input type="submit" value="Upload">
+<title>Simple tables</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<style>body  {
+background: #F4F4F4;
+margin: 0;
+}
 
-    </form>
+#container {
+width: 780px;
+margin: 0 auto;
+text-align: center;
+background: #FFFFFF;
+}
+
+#header {
+padding: 45px 0 20px 40px;
+background-color: #a9c056;
+}
+
+#header a {
+color: #ffffff;
+text-decoration: none;
+font-size: 30px;
+font-family: "Myriad Pro", "Arial Narrow";
+}
+
+#menu {
+background-color: #555b61;
+padding: 6px 0 6px 40px;
+}
+
+#menu a {
+color: #c5d6db;
+text-decoration: none;
+font-size: 14px;
+font-family: "Arial Narrow", "Myriad Pro";
+}
+
+#menu a:hover {
+color: #ecf2f3;
+}
+
+#sidebar {
+float: left;
+width: 120px;
+padding: 30px 0 0 40px;
+margin: 0;
+}
+
+h1 {
+margin: 0px;
+color: #377ba8;
+font-size:24px;
+font-family: "Arial Narrow", "Myriad Pro";
+font-weight: normal;
+}
+
+h2 {
+color: #3b7687;
+font-size: 15px;
+margin: 20px 0 5px 0;
+}
+
+#main {
+margin: 0 0 0 180px;
+padding: 35px 40px 30px 0;
+color: #444444;
+font-family: "Georgia";
+font-size: 13px;
+line-height: 18px;
+text-align: justify;
+}
+
+#main a {
+color: #3b7687;
+text-decoration: none;
+}
+
+#main a:hover {
+color: #444444;
+}
+
+#footer {
+padding: 6px 40px 6px 40px;
+background: #d6d6d6;
+font-family: "Lucida Sans Unicode";
+color: #444444;
+font-size: 11px;
+text-align: right;
+}
+
+#footer a {
+text-decoration: none;
+color: #262626;
+}
+
+#footer a:hover {
+color: #666666;
+}
+
+.separator {
+font-size:11px;
+color:#FFFFFF;
+}
+    .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+    input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+  background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
 </head>
 <body>
-<div>
-  </div>
-  <br>
-  <br>
-  <footer>
-    <center>
-      <p>&copy; Metodos</p>
-    </center>
-  </footer>
+<div id="container">
+  <div id="header"> <a href="/">Forecast System</a> </div>
+  <div id="menu"> <a href="/">HOME</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href="upload">SUBIR UN ARCHIVO</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://github.com/">CONTACT US</a> </div>
+  <div id="main">
+  <h1>Upload new File</h1>
+    <form action="/upload" method="post" enctype=multipart/form-data>
+      <p><label class="custom-file-upload">
+    <input type="file" name="file"/>
+    <i class="fa fa-cloud-upload"></i> Elegir archivo
+</label>
+         <input class ="button" type="submit" value="Subir archivo">
+  <div id="footer"> &copy;2017 Forecast System &nbsp;<span class="separator">|</span>&nbsp; Design by  </a> </div>
+</div>
+
 </body>
-</html>
+
+
+</body>
