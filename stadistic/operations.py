@@ -86,9 +86,9 @@ def createTable(numMes):
         csvReader = csv.reader(csvDataFile, delimiter=",")
         for row in csvReader:
             if "2015-01" in row[0]:
-                tEnero.add_row((row[0],row[1]))
+                tEnero.add_row((row[0],str(row[1])))
             elif "2015-02" in row[0]:
-                tFebrero.add_row((str(row[0]),row[1]))
+                tFebrero.add_row((row[0],row[1]))
             elif "2015-03" in row[0]:
                 tMarzo.add_row((row[0],row[1]))
             elif "2015-04" in row[0]:
