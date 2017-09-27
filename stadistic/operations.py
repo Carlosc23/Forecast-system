@@ -70,46 +70,46 @@ def averageM():
 def createTable(numMes):
     #print "estoy aqui"
     opcion = numMes
-    tEnero = Table(names=("Fecha","Monto"), dtype=('S10','f8'))
-    tFebrero = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tMarzo = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tAbril = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tMayo = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tJunio = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tJulio = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tAgosto = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tSeptiembre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tOctubre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tNoviembre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
-    tDiciembre = Table(names=("Fecha", "Monto"), dtype=('S10','f8'))
+    tEnero = Table(names=("Fecha","Monto"), dtype=('S10','S11'))
+    tFebrero = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tMarzo = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tAbril = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tMayo = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tJunio = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tJulio = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tAgosto = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tSeptiembre = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tOctubre = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tNoviembre = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
+    tDiciembre = Table(names=("Fecha", "Monto"), dtype=('S10','S11'))
 
     with open("stadistic/pronosticosSuaves.csv") as csvDataFile:
         csvReader = csv.reader(csvDataFile, delimiter=",")
         for row in csvReader:
             if "2015-01" in row[0]:
-                tEnero.add_row((str(row[0]),str(row[1])))
+                tEnero.add_row((str(row[0]),"Q."+str(row[1])))
             elif "2015-02" in row[0]:
-                tFebrero.add_row((str(row[0]),row[1]))
+                tFebrero.add_row((str(row[0]),"Q."+str(row[1])))
             elif "2015-03" in row[0]:
-                tMarzo.add_row((row[0],row[1]))
+                tMarzo.add_row((row[0],"Q."+str(row[1])))
             elif "2015-04" in row[0]:
-                tAbril.add_row((str(row[0]),row[1]))
+                tAbril.add_row((str(row[0]),"Q."+str(row[1])))
             elif "2015-05" in row[0]:
-                tMayo.add_row((row[0],row[1]))
+                tMayo.add_row((row[0],"Q."+str(row[1])))
             elif "2015-06" in row[0]:
-                tJunio.add_row((row[0],row[1]))
+                tJunio.add_row((row[0],"Q."+str(row[1])))
             elif "2015-07" in row[0]:
-                tJulio.add_row((row[0],row[1]))
+                tJulio.add_row((row[0],"Q."+str(row[1])))
             elif "2015-08" in row[0]:
-                tAgosto.add_row((row[0],row[1]))
+                tAgosto.add_row((row[0],"Q."+str(row[1])))
             elif "2015-09" in row[0]:
-                tSeptiembre.add_row((row[0],row[1]))
+                tSeptiembre.add_row((row[0],"Q."+str(row[1])))
             elif "2015-10" in row[0]:
-                tOctubre.add_row((row[0],row[1]))
+                tOctubre.add_row((row[0],"Q."+str(row[1])))
             elif "2015-11" in row[0]:
-                tNoviembre.add_row((row[0],row[1]))
+                tNoviembre.add_row((row[0],"Q."+str(row[1])))
             elif "2015-12" in row[0]:
-                tDiciembre.add_row((row[0],row[1]))
+                tDiciembre.add_row((row[0],"Q."+str(row[1])))
     csvDataFile.closed
     if opcion == "1":
         return tEnero

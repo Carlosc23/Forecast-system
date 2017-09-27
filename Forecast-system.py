@@ -11,7 +11,7 @@ from werkzeug.utils import secure_filename
 from stadistic.converter import conversion
 from stadistic.operations import generate_graphs
 from stadistic.operations import averageM, graficarConSuavizamiento, smoothing, createTable
-from untitled import LocalStorage
+#from untitled import LocalStorage
 
 sys.path.append('/path/to/py_files_and_packages')
 from os.path import join, dirname, realpath
