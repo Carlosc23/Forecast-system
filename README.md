@@ -1,6 +1,6 @@
 # Forecast-system
 ## Installation
-pip install flask \n
+pip install flask
 pip install matplotlib
 pip install xldr
 pip install mpltools
