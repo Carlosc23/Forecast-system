@@ -226,6 +226,6 @@ def generate_graphs():
     # ax1.plot(series['2015-02'], color=plt.rcParams['axes.color_cycle'][2], linewidth=1.5, linestyle="-")
     # ax1.plot(series['2015-03'], color=plt.rcParams['axes.color_cycle'][2], linewidth=1.5, linestyle="-")
     # plt.show()
-    plt.savefig('static/images/Graph.png')
+    plt.savefig('static/image/Graph.png')
     path = 'Graph.png'
     return path

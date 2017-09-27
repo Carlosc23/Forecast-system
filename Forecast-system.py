@@ -29,7 +29,9 @@ app.config['stadistic'] = stadistic
 def hello_world():
     return render_template('index.html')
 
-
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 # File extension checking
 def allowed_filename(filename):
     print filename
@@ -71,24 +73,17 @@ def elegir_tiempo():
     return render_template('select.html')
 @app.route('/resultados<opc>', methods=['GET', 'POST'])
 def resultados(opc):
-    #browser = Browser()
-    #browser.visit("http://mdn.github.io/web-storage-demo")
-
     print "opc",opc
     smoothing()
     table= createTable(opc)
     females = pd.DataFrame(pd.np.array(table))
     a= graficarConSuavizamiento(opc)
     print "dataframe"
-    #print females
-    #storage = LocalStorage(browser)
-    #storage.clear()
     b="static/image/"+a
     return render_template('view.html',filename=b, tables=[females.to_html(classes='data')],
                            titles=['Tablas predictoras'])
 
 if __name__ == '__main__':
-    #print createTable(2)
     app.debug = True
     app.run()
     app.run(debug=True)
