@@ -13,32 +13,32 @@ style.use('ggplot')
 
 
 def smoothing():
-    d2017M = []
-    d2017M = averageM()[0]
-    d2017Suave = []
-    f2017 = []
-    f2017 = averageM()[1]
+    d2015M = []
+    d2015M = averageM()[0]
+    d2015Suave = []
+    f2015 = []
+    f2015 = averageM()[1]
     alpha = 0.74
-    d2017Suave.append(d2017M[0])  # obtener primer dato para el suavizamiento (es igual al del ponderado)
-    for i in range(len(f2017) - 1):
-        d2017Suave.append(alpha * float(d2017M[i + 1]) + (1.0 - alpha) * float(
-            d2017Suave[i]))  # ponderado junto con el del dia anterior
+    d2015Suave.append(d2015M[0])  # obtener primer dato para el suavizamiento (es igual al del ponderado)
+    for i in range(len(f2015) - 1):
+        d2015Suave.append(alpha * float(d2015M[i + 1]) + (1.0 - alpha) * float(
+            d2015Suave[i]))  # ponderado junto con el del dia anterior
     with open("stadistic/pronosticosSuaves.csv", "w") as csvDataFile:
         fieldnames = ['fecha', 'cobro']
         writer = csv.DictWriter(csvDataFile, fieldnames=fieldnames)
         writer.writeheader()
-        for index in range(len(f2017)):
-            writer.writerow({'fecha': str(f2017[index]), 'cobro': str(d2017Suave[index])})
+        for index in range(len(f2015)):
+            writer.writerow({'fecha': str(f2015[index]), 'cobro': str(d2015Suave[index])})
 
 
 def averageM():
     fecha = []
-    f2016 = []
-    d2016 = []
+    f2014 = []
+    d2014 = []
+    f2013 = []
+    d2013 = []
     f2015 = []
     d2015 = []
-    f2017 = []
-    d2017 = []
     dinero = []
     with open("stadistic/csvfile.csv") as csvDataFile:
         csvReader = csv.reader(csvDataFile, delimiter=",")
@@ -46,30 +46,30 @@ def averageM():
             fecha.append(row[0])
             dinero.append(row[1])
         for i in range(len(fecha)):
-            if "2015" in fecha[i]:
-                f2015.append(fecha[i])
-                d2015.append(dinero[i])
-            elif "2016" in fecha[i]:
-                f2016.append(fecha[i])
-                d2016.append(dinero[i])
-        for j in range(len(f2015) - 3):
-            if float(d2016[j + 1]) == 0:
-                d2017.append(float(d2015[j + 2]))
+            if "2013" in fecha[i]:
+                f2013.append(fecha[i])
+                d2013.append(dinero[i])
+            elif "2014" in fecha[i]:
+                f2014.append(fecha[i])
+                d2014.append(dinero[i])
+        for j in range(len(f2013) - 3):
+            if float(d2014[j + 1]) == 0:
+                d2015.append(float(d2013[j + 2]))
             else:
-                d2017.append((3 * float(d2015[j + 2]) + 10 * float(
-                    d2016[j + 1])) / 13.0)  # linea donde se calcula el promedio/media ponderada
-            f2017.append(f2015[j + 1].replace("2015", "2017"))
-        d2017.pop(0)
-        f2017.pop(len(f2017) - 1)
+                d2015.append((3 * float(d2013[j + 2]) + 10 * float(
+                    d2014[j + 1])) / 13.0)  # linea donde se calcula el promedio/media ponderada
+            f2015.append(f2013[j + 1].replace("2013", "2015"))
+        d2015.pop(0)
+        f2015.pop(len(f2015) - 1)
     csvDataFile.closed
     with open("stadistic/pronosticoPromedio.csv", 'wb') as csvDataFile:
         fieldnames = ['fecha', 'cobro']
         writer = csv.DictWriter(csvDataFile, fieldnames=fieldnames)
         writer.writeheader()
-        for index in range(len(f2017)):
-            writer.writerow({'fecha': str(f2017[index]), 'cobro': str(d2017[index])})
+        for index in range(len(f2015)):
+            writer.writerow({'fecha': str(f2015[index]), 'cobro': str(d2015[index])})
     csvDataFile.closed
-    return d2017, f2017
+    return d2015, f2015
 
 
 def createTable(numMes):
@@ -147,7 +147,7 @@ def graficarConSuavizamiento(numMes):
     path = os.path.join(pre, 'pronosticosSuaves.csv')
     series = read_csv(path, header=0, parse_dates=[0], index_col=0, squeeze=True)
     tiempo = ""
-    tiempo = "2017-0" + str(numMes)
+    tiempo = "2015-0" + str(numMes)
     print tiempo
     a = series[tiempo]
     plt.figure(1)
@@ -226,13 +226,12 @@ def generate_graphs():
     pre = os.path.dirname(os.path.realpath(__file__))
     path = os.path.join(pre, 'csvfile.csv')
     series = read_csv(path, header=0, parse_dates=[0], index_col=0, squeeze=True)
-    a = series['2017-01']
-    # ax1.plot(series['2017-01'], color=plt.rcParams['axes.color_cycle'][1], linewidth=1.5, linestyle="-")
+    a = series['2015-01']
+    # ax1.plot(series['2015-01'], color=plt.rcParams['axes.color_cycle'][1], linewidth=1.5, linestyle="-")
     a.plot(color=plt.rcParams['axes.color_cycle'][1], linewidth=1.5, linestyle="-")
-    # ax1.plot(series['2017-02'], color=plt.rcParams['axes.color_cycle'][2], linewidth=1.5, linestyle="-")
-    # ax1.plot(series['2017-03'], color=plt.rcParams['axes.color_cycle'][2], linewidth=1.5, linestyle="-")
+    # ax1.plot(series['2015-02'], color=plt.rcParams['axes.color_cycle'][2], linewidth=1.5, linestyle="-")
+    # ax1.plot(series['2015-03'], color=plt.rcParams['axes.color_cycle'][2], linewidth=1.5, linestyle="-")
     # plt.show()
     plt.savefig('static/images/Graph.png')
     path = 'Graph.png'
     return path
-
