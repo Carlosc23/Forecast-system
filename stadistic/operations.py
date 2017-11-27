@@ -91,29 +91,29 @@ def createTable(numMes):
     with open("stadistic/pronosticosSuaves.csv") as csvDataFile:
         csvReader = csv.reader(csvDataFile, delimiter=",")
         for row in csvReader:
-            if "2017-01" in row[0]:
+            if "2015-01" in row[0]:
                 tEnero.add_row((str(row[0]).replace("2015","2017"), str(row[1])))
-            elif "2017-02" in row[0]:
+            elif "2015-02" in row[0]:
                 tFebrero.add_row((str(row[0]).replace("2015","2017"), row[1]))
-            elif "2017-03" in row[0]:
+            elif "2015-03" in row[0]:
                 tMarzo.add_row((row[0].replace("2015","2017"), row[1]))
-            elif "2017-04" in row[0]:
+            elif "2015-04" in row[0]:
                 tAbril.add_row((str(row[0]).replace("2015","2017"), row[1]))
-            elif "2017-05" in row[0]:
+            elif "2015-05" in row[0]:
                 tMayo.add_row((row[0].replace("2015","2017"), row[1]))
-            elif "2017-06" in row[0]:
+            elif "2015-06" in row[0]:
                 tJunio.add_row((row[0].replace("2015","2017"), row[1]))
-            elif "2017-07" in row[0]:
+            elif "2015-07" in row[0]:
                 tJulio.add_row((row[0].replace("2015","2017"), row[1]))
-            elif "2017-08" in row[0]:
+            elif "2015-08" in row[0]:
                 tAgosto.add_row((row[0].replace("2015","2017"), row[1]))
-            elif "2017-09" in row[0]:
+            elif "2015-09" in row[0]:
                 tSeptiembre.add_row((row[0].replace("2015","2017"), row[1]))
-            elif "2017-10" in row[0]:
+            elif "2015-10" in row[0]:
                 tOctubre.add_row((row[0].replace("2015","2017"), row[1]))
-            elif "2017-11" in row[0]:
+            elif "2015-11" in row[0]:
                 tNoviembre.add_row((row[0].replace("2015","2017"), row[1]))
-            elif "2017-12" in row[0]:
+            elif "2015-12" in row[0]:
                 tDiciembre.add_row((row[0].replace("2015","2017"), row[1]))
     csvDataFile.closed
     if opcion == "1":
